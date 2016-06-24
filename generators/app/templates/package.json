@@ -1,0 +1,27 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "<%= description %>",
+  "main": "server.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "build:frontend": "webpack",
+    "build:server": "babel server --out-dir .server --copy-files",
+    "build": "npm run build:frontend && npm run build:server",
+    "serve": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "<%= git.url %>"
+  },
+  "keywords": [],
+  "author": "<%= author %>",
+  "license": "<%= license %>",
+  "bugs": {
+    "url": "<%= git.url %>/issues"
+  },
+  "homepage": "git"
+}

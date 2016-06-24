@@ -1,0 +1,18 @@
+<article class="__login-route">
+
+  <form novalidate v-on:submit.prevent.default="login">
+
+    <label for="email">
+      Email
+      <input type="email" id="email" name="email" v-model="email">
+    </label>
+    <label for="password">
+      Password
+      <input type="password" id="password" name="password" v-model="password">
+    </label>
+
+    <button :disabled="!allowLogin() || isLoading">Login</button>
+
+  </form>
+
+</article>
