@@ -9,6 +9,11 @@ import config from '../config';
 
 const { http, storage } = utils;
 
+/**
+ * regex for validating email addresses.
+ */
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 // Keep a global reference to the local user
 let _currentUser;
 
@@ -106,6 +111,16 @@ export function getHeaders(token, headers) {
 }
 
 /**
+ * Validates an email address.
+ *
+ * @param {String} email Email address to validate
+ * @return {Boolean}
+ */
+export function validateEmail(email) {
+  return emailRegex.test(email);
+}
+
+/**
  * Sets up the auth module.
  */
 function setup() {
@@ -134,4 +149,5 @@ export default {
   getMe: getMe,
   getCurrentUser: getCurrentUser,
   getHeaders: getHeaders,
+  validateEmail: validateEmail,
 }

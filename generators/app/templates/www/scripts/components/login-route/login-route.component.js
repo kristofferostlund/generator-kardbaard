@@ -8,11 +8,6 @@ import template from './login-route.template.html';
 
 import auth from '../../services/auth';
 
-/**
- * regex for validating email addresses.
- */
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 const LoginRouteComponent = Vue.extend({
   template,
   data: function () {
@@ -46,7 +41,7 @@ const LoginRouteComponent = Vue.extend({
     allowLogin: function () {
       return _.every([
         // Email must be valid
-        emailRegex.test(this.email),
+        auth.validateEmail(this.email),
         // Passwqord must exist
         !!this.password,
       ]);
