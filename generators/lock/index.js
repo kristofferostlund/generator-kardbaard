@@ -49,7 +49,7 @@ module.exports = generators.Base.extend({
       .pick('dependencies')
       .thru(function (obj) { return obj.dependencies; })
       .map(function (val, key) { return { key: key, val: val }; })
-      .map(function (dep) { return _.assign({}, dep, { val: dep.val.replace(/[^a-z0-9.]/ig, '') }); })
+      .map(function (dep) { return _.assign({}, dep, { val: dep.val.replace(/[^a-z0-9.:\/]/ig, '') }); })
       .reduce(function (obj, item) {
         var o = {};
         o[item.key] = item.val;
